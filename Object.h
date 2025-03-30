@@ -7,12 +7,10 @@
 // Object class/category to identify the object type
 enum OBJECT_CLASS {
     PERSON,             // For people detection
-    VEHICLE,            // For vehicle detection (cars, trucks, buses, motorcycles, etc.)
-    BAG,                // For bag detection (backpack, handbag, suitcase, etc.)
-    ANIMAL,             // For animal detection (cow, sheep, horse, dog, cat, bird, etc.)
-    ELECTRONICS,        // For electronic device detection (cellphone, laptop, etc.)
-    FRUIT_VEGETABLE,    // For fruit and vegetable detection (banana, apple, orange, carrot, etc.)
-    SPORT               // For sport-related object detection (sport ball, etc.)
+    VEHICLE,
+    STOP,
+    PED_CROSSING,
+    DNE
 };
 
 class Object {

@@ -83,11 +83,9 @@ Object ObjectParser::parseLine(const std::string& line) {
 OBJECT_CLASS ObjectParser::stringToObjectClass(const std::string& str) {
     if (str == "PERSON") return PERSON;
     if (str == "VEHICLE") return VEHICLE;
-    if (str == "BAG") return BAG;
-    if (str == "ANIMAL") return ANIMAL;
-    if (str == "ELECTRONICS") return ELECTRONICS;
-    if (str == "FRUIT_VEGETABLE") return FRUIT_VEGETABLE;
-    if (str == "SPORT") return SPORT;
+    if (str == "STOP") return STOP;
+    if (str == "PED_CROSSING") return PED_CROSSING;
+    if (str == "DNE") return DNE;
 
     throw std::runtime_error("Unknown object class: " + str);
 }

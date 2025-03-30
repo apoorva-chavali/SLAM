@@ -4,19 +4,6 @@
 #include <iostream>
 #include <iomanip>
 
-// Helper function to convert OBJECT_CLASS enum to string
-std::string objectClassToString(OBJECT_CLASS cls) {
-    switch (cls) {
-    case PERSON: return "PERSON";
-    case VEHICLE: return "VEHICLE";
-    case BAG: return "BAG";
-    case ANIMAL: return "ANIMAL";
-    case ELECTRONICS: return "ELECTRONICS";
-    case FRUIT_VEGETABLE: return "FRUIT_VEGETABLE";
-    case SPORT: return "SPORT";
-    default: return "UNKNOWN";
-    }
-}
 
 // Helper function to display a vector
 void printVector(const std::vector<float>& vec) {

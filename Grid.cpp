@@ -73,11 +73,9 @@ char Grid::getObjectSymbol(OBJECT_CLASS objClass) const {
     switch (objClass) {
     case PERSON:         return 'P';
     case VEHICLE:        return 'V';
-    case BAG:            return 'B';
-    case ANIMAL:         return 'A';
-    case ELECTRONICS:    return 'E';
-    case FRUIT_VEGETABLE: return 'F';
-    case SPORT:          return 'S';
+    case STOP:            return 'S';
+    case PED_CROSSING:  return 'C';
+    case DNE:           return 'D';
     default:             return 'X';
     }
 }
@@ -120,11 +118,9 @@ void Grid::displayGrid() const {
     std::cout << "\nLegend:" << std::endl;
     std::cout << "P - Person" << std::endl;
     std::cout << "V - Vehicle" << std::endl;
-    std::cout << "B - Bag" << std::endl;
-    std::cout << "A - Animal" << std::endl;
-    std::cout << "E - Electronics" << std::endl;
-    std::cout << "F - Fruit/Vegetable" << std::endl;
-    std::cout << "S - Sport" << std::endl;
+    std::cout << "S - Stop Sign" << std::endl;
+    std::cout << "C - Pedestrian Crossing" << std::endl;
+    std::cout << "D - Do Not Enter" << std::endl;
     std::cout << ". - Empty" << std::endl;
 }
 
@@ -172,11 +168,9 @@ bool Grid::saveToFile(const std::string& filename) const {
     file << "\nLegend:" << std::endl;
     file << "P - Person" << std::endl;
     file << "V - Vehicle" << std::endl;
-    file << "B - Bag" << std::endl;
-    file << "A - Animal" << std::endl;
-    file << "E - Electronics" << std::endl;
-    file << "F - Fruit/Vegetable" << std::endl;
-    file << "S - Sport" << std::endl;
+    file << "S - Stop Sign" << std::endl;
+    file << "C - Pedestrian Crossing" << std::endl;
+    file << "D - Do Not Enter" << std::endl;
     file << ". - Empty" << std::endl;
 
     file.close();

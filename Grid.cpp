@@ -64,7 +64,7 @@ std::pair<int, int> Grid::objectToGridCoords(const Object& obj) const {
     int y = static_cast<int>(pos[1]);
 
     // Flip y-coordinate since grid is displayed with (0,0) at top-left
-    y = gridSize - 1 - y;
+    // y = gridSize - 1 - y;
 
     return { x, y };
 }

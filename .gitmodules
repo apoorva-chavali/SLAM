@@ -1,0 +1,3 @@
+[submodule "external/geographiclib"]
+	path = external/geographiclib
+	url = https://github.com/sotex/geographiclib.git

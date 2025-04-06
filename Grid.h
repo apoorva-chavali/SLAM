@@ -1,40 +1,42 @@
-#ifndef GRID_H
-#define GRID_H
+// #ifndef GRID_H
+// #define GRID_H
 
-#include "Object.h"
-#include <vector>
-#include <string>
+// #include "Object.h"
+// #include <vector>
+// #include <string>
 
-class Grid {
-public:
-    // Constructor with grid size parameter (default 20x20)
-    Grid(int size = 20);
-    ~Grid();
+// class Grid {
+// public:
+//     // Constructor with grid size parameter (default 20x20)
+//     Grid(int size = 20);
+//     ~Grid();
 
-    // Place objects on the grid
-    void placeObjects(const std::vector<Object>& objects);
+//     std::vector<Object> convertObjectsToLatLon(double originLat, double originLon, const std::vector<Object>& objects);
 
-    // Display the grid with objects
-    void displayGrid() const;
+//     // Place objects on the grid
+//     void placeObjects(const std::vector<Object>& objects);
 
-    // Save grid to file
-    bool saveToFile(const std::string& filename) const;
+//     // Display the grid with objects
+//     void displayGrid() const;
 
-private:
-    int gridSize;
-    char** grid;
+//     // Save grid to file
+//     bool saveToFile(const std::string& filename) const;
 
-    // Convert object coordinates to grid coordinates
-    std::pair<int, int> objectToGridCoords(const Object& obj) const;
+// private:
+//     int gridSize;
+//     char** grid;
 
-    // Initialize grid with empty cells
-    void initializeGrid();
+//     // Convert object coordinates to grid coordinates
+//     std::pair<int, int> objectToGridCoords(const Object& obj) const;
 
-    // Clear the grid and free memory
-    void clearGrid();
+//     // Initialize grid with empty cells
+//     void initializeGrid();
 
-    // Get character representation based on object class
-    char getObjectSymbol(OBJECT_CLASS objClass) const;
-};
+//     // Clear the grid and free memory
+//     void clearGrid();
 
-#endif // GRID_H
+//     // Get character representation based on object class
+//     char getObjectSymbol(OBJECT_CLASS objClass) const;
+// };
+
+// #endif // GRID_H

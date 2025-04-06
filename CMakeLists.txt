@@ -2,8 +2,14 @@ cmake_minimum_required(VERSION 3.10)
 project(ObjectParser)
 
 # Set C++ standard
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Specify the path where CMake can find GeographicLib
+set(GeographicLib_DIR "/usr/share/cmake/geographiclib")
+
+# Find GeographicLib
+find_package(GeographicLib REQUIRED)
 
 # Set output directory for all configurations
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
@@ -20,6 +26,9 @@ add_executable(object_parser
 
 # Include directories
 target_include_directories(object_parser PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Link GeographicLib to the target
+target_link_libraries(object_parser PRIVATE GeographicLib::GeographicLib)
 
 # Enable warnings
 if(MSVC)

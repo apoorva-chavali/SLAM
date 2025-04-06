@@ -1,31 +1,35 @@
 #include "Object.h"
 #include "ObjectParser.h"
-#include "Grid.h"
 #include <iostream>
 #include <iomanip>
 
-
-// Helper function to display a vector
-void printVector(const std::vector<float>& vec) {
-    std::cout << "(" << vec[0] << ", " << vec[1] << ", " << vec[2] << ")";
-}
-
 int main() {
-    // Create parser instance
     ObjectParser parser;
 
-    // Parse objects from file
+    // Define the reference GPS location (frame origin)
+    double originLat = 37.7749;   // Example: San Francisco
+    double originLon = -122.4194;
+    double heading = 0.0;         // Heading of the frame in degrees (0 = true north)
+
+    // Load objects from file
     std::string filename = "objects.txt";
     std::vector<Object> objects = parser.parseFile(filename);
 
-    // Display results
-    std::cout << "Successfully parsed " << objects.size() << " objects:\n" << std::endl;
+    // Convert each object’s (x, y) into GPS coordinates
+    for (auto& obj : objects) {
+        obj.computeLatLonFromDisplacement(originLat, originLon, heading);
+    }
 
-    // Create and display the grid visualization
-    std::cout << "\n==== Object Grid Visualization ====\n" << std::endl;
-    Grid grid_v(20);
-    grid_v.placeObjects(objects);
-    grid_v.displayGrid();
+    // Print the updated objects
+    std::cout << std::fixed << std::setprecision(6);
+    std::cout << "Converted " << objects.size() << " objects:\n" << std::endl;
+
+    for (const auto& obj : objects) {
+        std::cout << "Object ID: " << obj.getId()
+                  << " | Lat: " << obj.getLatitude()
+                  << " | Lon: " << obj.getLongitude()
+                  << std::endl;
+    }
 
     return 0;
 }

@@ -1,20 +1,17 @@
 cmake_minimum_required(VERSION 3.10)
 project(ObjectParser)
 
-# Set C++ standard
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Specify the path where CMake can find GeographicLib
-set(GeographicLib_DIR "/usr/share/cmake/geographiclib")
+# Add directory where FindGeographicLib.cmake is located
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "/usr/share/cmake/geographiclib")
 
-# Find GeographicLib
+# Use the FindGeographicLib module
 find_package(GeographicLib REQUIRED)
 
-# Set output directory for all configurations
+# Set output directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR})
 
 # Add executable
 add_executable(object_parser
@@ -27,19 +24,18 @@ add_executable(object_parser
 # Include directories
 target_include_directories(object_parser PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Link GeographicLib to the target
-target_link_libraries(object_parser PRIVATE GeographicLib::GeographicLib)
+# ✅ Correct: Link against GeographicLib
+target_link_libraries(object_parser PRIVATE GeographicLib)
 
-# Enable warnings
+# Warnings
 if(MSVC)
     target_compile_options(object_parser PRIVATE /W4)
 else()
     target_compile_options(object_parser PRIVATE -Wall -Wextra)
 endif()
 
-# Copy the objects.txt file to the build directory
+# Copy input file
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/objects.txt
                ${CMAKE_CURRENT_BINARY_DIR}/objects.txt COPYONLY)
 
-# Print success message
 message(STATUS "Configuration complete, build with: cmake --build .")
